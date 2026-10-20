@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Super SAT</title>
+<meta name="description" content="Super SAT — Andijon Yuksalish maktabi o'quvchilari uchun SAT tayyorlov platformasi: lug'atlar, Writing va Reading testlari, mavzular, Full Mock va o'yinlar.">
+<meta name="theme-color" content="#16233f">
+<link rel="icon" href="/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="/css/app.css?v=2">
+<script>
+  /* apply the saved (or system) theme before first paint */
+  (function(){var t=null;try{t=localStorage.getItem("ss-theme")}catch(e){}
+    if(t!=="light"&&t!=="dark")t=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";
+    document.documentElement.classList.toggle("dark",t==="dark");document.documentElement.dataset.theme=t;
+    try{var l=localStorage.getItem("ss-lang");if(l==="ru"||l==="en"||l==="uz")document.documentElement.lang=l}catch(e){}})();
+</script>
+</head>
+<body>
+<header class="shell-header">
+  <div class="shell-in">
+    <a href="/" class="brand" data-go="home" aria-label="Super SAT">
+      <span class="brand-mark">S<b>+</b></span><span class="text-lg">Super SAT</span>
+    </a>
+    <nav class="nav" aria-label="Menyu">
+      <a href="#" data-go="home">Bosh sahifa</a>
+      <a href="#" data-go="lugat">Lug'atlar</a>
+      <a href="#" data-go="writing">Writing</a>
+      <a href="#" data-go="reading">Reading</a>
+      <a href="#" data-go="themes">Mavzular</a>
+      <a href="#" data-go="mockHome">Mock imtihon</a>
+      <a href="#" data-go="gmenu">O'yinlar</a>
+    </nav>
+    <div class="tools">
+      <div class="seg" role="group" aria-label="Til">
+        <button type="button" data-lang="uz">UZ</button>
+        <button type="button" data-lang="ru">RU</button>
+        <button type="button" data-lang="en">EN</button>
+      </div>
+      <button type="button" class="icon-btn" id="themeBtn" aria-label="Qorong'i rejim" title="Qorong'i rejim">
+        <svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        <svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" hidden><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      </button>
+      <button type="button" class="icon-btn menu-btn lg:hidden" id="menuBtn" aria-label="Menyu" aria-expanded="false" aria-controls="drawer">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </div>
+  <nav class="drawer" id="drawer" aria-label="Menyu" hidden>
+    <a href="#" data-go="home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>Bosh sahifa</a>
+    <a href="#" data-go="lugat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2zM4 19V5M9 7h6M9 11h6"/></svg>Lug'atlar</a>
+    <a href="#" data-go="writing"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l1-4L17 4l3 3L8 19zM14 7l3 3M4 20h6"/></svg>Writing</a>
+    <a href="#" data-go="reading"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 5h6a4 4 0 0 1 4 4v11a3 3 0 0 0-3-3H2zM22 5h-6a4 4 0 0 0-4 4v11a3 3 0 0 1 3-3h7z"/></svg>Reading</a>
+    <a href="#" data-go="themes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7.5" height="7.5" rx="1.5"/><rect x="13.5" y="3" width="7.5" height="7.5" rx="1.5"/><rect x="3" y="13.5" width="7.5" height="7.5" rx="1.5"/><rect x="13.5" y="13.5" width="7.5" height="7.5" rx="1.5"/></svg>Mavzular</a>
+    <a href="#" data-go="mockHome"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 3h6v3H9zM8.5 11h7M8.5 14.5h7M8.5 18h4"/></svg>Mock imtihon</a>
+    <a href="#" data-go="gmenu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8h12a4 4 0 0 1 4 4v3a3 3 0 0 1-5.2 2L15 15H9l-1.8 2A3 3 0 0 1 2 15v-3a4 4 0 0 1 4-4zM7 11v3M5.5 12.5h3M16 12h.01M18 14h.01"/></svg>O'yinlar</a>
+  </nav>
+</header>
+
+<main id="app" aria-live="polite">
+  <div class="wrap"><p class="sub" style="text-align:center;margin-top:80px">Yuklanmoqda...</p></div>
+</main>
+
+<footer class="shell-footer">
+  <p class="hidden sm:block">Klaviatura: A–D yoki 1–4 — variant, Enter — tasdiqlash / keyingi.</p>
+  <p class="mt-1">Super SAT · <span>Andijon Yuksalish maktabi o'quvchilari uchun</span></p>
+</footer>
+
+<button type="button" class="to-top" id="toTop" aria-label="Tepaga" title="Tepaga" hidden>
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+</button>
+
+<script src="/api/config.js"></script>
+<script defer src="/js/core.js?v=2"></script>
+<script defer src="/js/data/tests.js?v=1"></script>
+<script defer src="/js/explain.js?v=1"></script>
+<script defer src="/js/data/vocab.js?v=1"></script>
+<script defer src="/js/data/books.js?v=1"></script>
+<script defer src="/js/data/math.js?v=1"></script>
+<script defer src="/js/app.js?v=2"></script>
+<script defer src="/js/i18n.js?v=2"></script>
+<script defer src="/js/ui.js?v=2"></script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+{
+  "name": "super-sat",
+  "version": "1.0.0",
+  "description": "Super SAT — SAT tayyorlov platformasi (Node.js + Tailwind CSS)",
+  "main": "server.js",
+  "scripts": {
+    "build:css": "tailwindcss -i ./src/input.css -o ./public/css/app.css --minify",
+    "watch:css": "tailwindcss -i ./src/input.css -o ./public/css/app.css --watch",
+    "build": "npm run build:css",
+    "start": "node server.js",
+    "dev": "npm run build:css && node server.js"
+  },
+  "license": "UNLICENSED",
+  "dependencies": {
+    "@vercel/blob": "^1.1.1",
+    "compression": "^1.8.2",
+    "express": "^4.22.3"
+  },
+  "devDependencies": {
+    "tailwindcss": "3.4"
+  },
+  "private": true,
+  "engines": {
+    "node": ">=18"
+  }
+}
