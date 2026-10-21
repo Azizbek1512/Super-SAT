@@ -39,7 +39,7 @@ Asl fayl claude.ai ichida ishlagan: sinflar sahifaning o'ziga yozilgan va o'qitu
 - **O'qituvchi** bosh sahifada "O'qituvchi sifatida kirish" → `TEACHER_PASSWORD` paroli bilan kiradi.
 - **Sinflar** (nom, taklif kodi, imtihon setlari) serverda `data/classes.json` faylida saqlanadi; "Saqlash va e'lon qilish" ularni darhol o'quvchilarga ko'rsatadi.
 - **Taklif havolasi** — saytning o'z manzili.
-- Saytga kirish paroli (gate) asl fayldagidek qoldi.
+- Saytga kirish paroli (gate) olib tashlandi — sayt hamma uchun ochiq.
 
 ## Tuzilma
 

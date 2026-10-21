@@ -35,7 +35,6 @@ function stopAll(){
   document.querySelectorAll('body>div[style*="position:fixed"],#nvm').forEach(o=>o.remove());
 }
 function go(name){
-  if(body.classList.contains("locked"))return;
   const fn=window[name];if(typeof fn!=="function")return;
   const run=()=>{stopAll();fn();closeDrawer();window.scrollTo({top:0,behavior:"instant"})};
   let inExam=false;try{inExam=!!(MS&&MS.cur&&MS.si<MS.st.length)}catch(e){}
@@ -52,10 +51,6 @@ const drawer=document.getElementById("drawer"),menuBtn=document.getElementById("
 function closeDrawer(){drawer.hidden=true;menuBtn.setAttribute("aria-expanded","false")}
 menuBtn.addEventListener("click",()=>{const open=drawer.hidden;drawer.hidden=!open;menuBtn.setAttribute("aria-expanded",String(open))});
 window.addEventListener("resize",()=>{if(window.innerWidth>=1024)closeDrawer()});
-
-/* password gate: keep the menu hidden until the student is signed in */
-const setLock=()=>body.classList.toggle("locked",!(typeof PWOK!=="undefined"&&PWOK));
-setLock();document.addEventListener("ss:unlock",setLock);
 
 /* page-level state after every screen change */
 new MutationObserver(()=>{
