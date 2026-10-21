@@ -4,85 +4,87 @@
 
 /* ---------- theme tokens (RGB triplets) ---------- */
 :root{
-  --bg:243 246 251;--card:255 255 255;--ink:15 25 48;--mute:88 101 128;--line:220 227 238;
-  --acc:29 78 216;--accink:255 255 255;--ok:12 122 77;--okbg:222 246 234;--bad:180 35 24;--badbg:253 229 226;
-  --brand:22 35 63;--gold:245 130 32;
+  --bg:250 250 250;--card:255 255 255;--ink:23 23 23;--mute:115 115 115;--line:229 229 229;
+  --acc:23 23 23;--accink:255 255 255;--ok:21 128 61;--okbg:240 253 244;--bad:185 28 28;--badbg:254 242 242;
+  --brand:23 23 23;--gold:245 130 32;
   color-scheme:light;
 }
 html.dark{
-  --bg:10 17 31;--card:19 30 51;--ink:233 238 248;--mute:156 170 196;--line:41 57 88;
-  --acc:118 160 255;--accink:10 17 31;--ok:95 214 160;--okbg:16 56 42;--bad:255 143 132;--badbg:68 32 28;
-  --brand:22 35 63;--gold:255 159 67;
+  --bg:10 10 10;--card:20 20 20;--ink:237 237 237;--mute:161 161 161;--line:38 38 38;
+  --acc:237 237 237;--accink:10 10 10;--ok:74 222 128;--okbg:20 40 28;--bad:248 113 113;--badbg:48 20 20;
+  --brand:237 237 237;--gold:255 159 67;
   color-scheme:dark;
 }
 
 /* ---------- base ---------- */
 html{@apply scroll-smooth;scroll-padding-top:80px;-webkit-text-size-adjust:100%}
-body{@apply min-h-screen bg-bg font-sans text-ink antialiased;font-feature-settings:"cv11","ss01"}
+body{@apply min-h-screen bg-bg font-sans text-ink antialiased;font-feature-settings:"cv11","ss01";letter-spacing:-.006em}
 [hidden]{display:none!important}
-::selection{@apply bg-acc/25}
+::selection{@apply bg-gold/25}
 img{max-width:100%}
 :focus-visible{@apply outline-none ring-2 ring-acc ring-offset-2 ring-offset-bg}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
 
 /* ---------- app shell ---------- */
-.shell-header{@apply sticky top-0 z-40 border-b border-line/70 bg-card/80 backdrop-blur-xl;padding-top:env(safe-area-inset-top,0px)}
+.shell-header{@apply sticky top-0 z-40 border-b border-line bg-bg/85 backdrop-blur-md;padding-top:env(safe-area-inset-top,0px)}
 .shell-in{@apply mx-auto flex h-16 max-w-6xl items-center gap-3 px-4 sm:px-6}
-.brand{@apply flex shrink-0 items-center gap-2.5 rounded-xl font-extrabold tracking-tight text-ink}
-.brand-mark{@apply flex h-9 w-9 items-center justify-center rounded-xl bg-brand text-sm font-black text-white shadow-soft}
+.brand{@apply flex shrink-0 items-center gap-2.5 rounded-lg font-semibold tracking-tight text-ink}
+.brand-mark{@apply flex h-8 w-8 items-center justify-center rounded-lg border border-line text-sm font-bold text-ink}
 .brand-mark b{@apply text-gold}
 @media (max-width:399px){.brand>span:last-child{display:none}.shell-in{gap:.5rem}}
 .nav{@apply hidden flex-1 items-center justify-center gap-1 lg:flex}
-.nav a{@apply rounded-lg px-3 py-2 text-sm font-semibold text-mute transition hover:bg-acc/10 hover:text-ink}
-.nav a.on{@apply bg-acc/10 text-acc}
+.nav a{@apply rounded-md px-3 py-2 text-sm font-medium text-mute transition hover:text-ink}
+.nav a.on{@apply text-ink;box-shadow:inset 0 -1.5px 0 rgb(var(--ink))}
 .tools{@apply ml-auto flex items-center gap-2 lg:ml-0}
-.seg{@apply flex rounded-xl border border-line bg-bg p-0.5}
-.seg button{@apply rounded-[10px] px-2.5 py-1.5 text-xs font-bold uppercase tracking-wide text-mute transition hover:text-ink}
-.seg button.on{@apply bg-card text-acc shadow-soft}
-.icon-btn{@apply flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-line bg-card p-0 text-ink transition hover:border-acc hover:text-acc}
-.icon-btn svg{@apply h-5 w-5 shrink-0}
+.seg{@apply flex rounded-lg border border-line p-0.5}
+.seg button{@apply rounded-md px-2.5 py-1.5 text-xs font-semibold uppercase tracking-wide text-mute transition hover:text-ink}
+.seg button.on{@apply bg-ink/[.06] text-ink}
+.icon-btn{@apply flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-line bg-transparent p-0 text-ink transition hover:border-ink/40}
+.icon-btn svg{@apply h-[18px] w-[18px] shrink-0}
 .icon-btn svg[hidden]{display:none}
-.drawer{@apply border-t border-line/70 bg-card px-4 pb-4 pt-2 lg:hidden}
-.drawer a{@apply flex items-center gap-3 rounded-xl px-3 py-3 font-semibold text-ink transition hover:bg-acc/10}
-.drawer a.on{@apply bg-acc/10 text-acc}
-.drawer svg{@apply h-5 w-5 text-acc}
+.drawer{@apply border-t border-line bg-bg px-4 pb-4 pt-2 lg:hidden}
+.drawer a{@apply flex items-center gap-3 rounded-lg px-3 py-3 font-medium text-ink transition hover:bg-ink/[.04]}
+.drawer a.on{@apply bg-ink/[.06]}
+.drawer svg{@apply h-5 w-5 text-mute}
 .shell-footer{@apply mx-auto max-w-6xl px-4 pb-10 pt-2 text-center text-xs text-mute sm:px-6}
-.to-top{@apply fixed bottom-5 right-4 z-30 grid h-11 w-11 place-items-center rounded-full border border-line bg-card text-acc shadow-soft transition hover:border-acc sm:right-6}
+.to-top{@apply fixed bottom-5 right-4 z-30 grid h-10 w-10 place-items-center rounded-full border border-line bg-card text-ink transition hover:border-ink/40 sm:right-6}
 .to-top svg{@apply h-5 w-5}
 body.in-mock .to-top{bottom:84px}
 body.locked .nav,body.locked .menu-btn,body.locked .drawer{display:none!important}
 
 /* ---------- page container ---------- */
-.wrap{@apply mx-auto w-full max-w-3xl px-4 pb-14 pt-6 sm:px-6 sm:pt-8 lg:max-w-5xl}
-.wrap>h1,h1{@apply mb-2 mt-2 text-2xl font-extrabold leading-tight tracking-tight sm:text-3xl}
+.wrap{@apply mx-auto w-full max-w-3xl px-4 pb-16 pt-8 sm:px-6 sm:pt-12 lg:max-w-5xl}
+.wrap>h1,h1{@apply mb-2 mt-2 text-2xl font-semibold leading-tight tracking-tight sm:text-[2rem]}
 .sub{@apply mb-5 leading-relaxed text-mute}
-.h2{@apply mb-3 mt-7 text-xs font-bold uppercase tracking-[.08em] text-mute}
-.wrap h2:not(.h2):not(.word){@apply mb-3 mt-6 text-lg font-bold}
+.h2{@apply mb-3 mt-10 text-xs font-medium uppercase tracking-[.1em] text-mute}
+.wrap h2:not(.h2):not(.word){@apply mb-3 mt-8 text-lg font-semibold}
 
-.logoBox{@apply relative mb-4 overflow-hidden rounded-3xl bg-brand px-4 py-5 text-center shadow-soft sm:py-7}
-.logoBox::after{content:"";@apply pointer-events-none absolute inset-0;background:radial-gradient(60% 80% at 85% 0%,rgb(var(--gold)/.22),transparent 60%),radial-gradient(50% 70% at 0% 100%,rgb(var(--acc)/.25),transparent 60%)}
-.logo{@apply relative z-10 mx-auto block h-20 w-auto max-w-full sm:h-28}
+.logoBox{@apply relative mb-6 px-4 pt-2 text-center}
+/* the logo's lettering is white; use the ink version on light backgrounds */
+html:not(.dark) .logo{content:url(/img/logo-ink.png)}
+.logo{@apply relative mx-auto block h-14 w-auto max-w-full sm:h-20}
 
 /* ---------- buttons ---------- */
-.btn{@apply mb-2.5 block w-full cursor-pointer rounded-2xl border border-line bg-card px-4 py-3.5 text-left font-semibold leading-snug text-ink shadow-soft transition duration-150;font:inherit;font-weight:600}
-.btn:hover{@apply border-acc/70 shadow-md}
+.btn{@apply mb-2.5 block w-full cursor-pointer rounded-xl border border-line bg-card px-4 py-3.5 text-left leading-snug text-ink transition duration-150;font:inherit;font-weight:500}
+.btn:hover{@apply border-ink/40}
 .btn:active{@apply scale-[.99]}
 .btn:disabled{@apply cursor-not-allowed opacity-50}
-.btn small{@apply mt-1 block text-[.82rem] font-medium text-mute}
+.btn small{@apply mt-1 block text-[.82rem] font-normal text-mute}
 .btn.ok{@apply border-ok bg-okbg}
 .btn.bad{@apply border-bad bg-badbg}
-.btn.pri{@apply border-acc bg-acc text-center font-bold text-accink hover:brightness-110}
+.btn.pri{@apply border-acc bg-acc text-center font-semibold text-accink hover:opacity-90}
 .btn.pri small{@apply text-accink/80}
-.btn.sel{@apply border-acc ring-2 ring-inset ring-acc}
-.btn.back{@apply mt-5 border-line bg-transparent text-center font-medium text-mute shadow-none hover:bg-card hover:text-ink}
+.btn.sel{@apply border-acc ring-1 ring-inset ring-acc}
+.btn.back{@apply mt-6 border-transparent bg-transparent text-center font-medium text-mute hover:border-line hover:text-ink}
 .btn.del{@apply border-bad/60 text-bad hover:border-bad}
-.btn.lk{@apply cursor-default hover:shadow-soft}
+.btn.lk{@apply cursor-default hover:border-line}
 .btn.lk:active{transform:none}
 a.btn{@apply no-underline}
-.btn .bi{@apply mb-3 box-content block rounded-xl bg-acc/10 p-2 text-acc}
+.btn .bi{@apply mb-4 block h-6 w-6 text-mute}
 .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:.625rem}
 @screen sm{.grid{column-gap:1rem}}
-.home-grid .btn{@apply flex min-h-[132px] flex-col justify-start p-4 sm:p-5}
+.home-grid .btn{@apply flex min-h-[132px] flex-col justify-start p-5 sm:p-6}
+.home-grid .btn:hover .bi{@apply text-ink}
 .home-grid .btn small{@apply mt-auto pt-1}
 .home-grid>.btn[style*="grid-column"]{grid-column:auto!important}
 @screen lg{
@@ -92,52 +94,52 @@ a.btn{@apply no-underline}
 .grid4{@apply grid grid-cols-4 gap-2}
 @screen md{.grid4:not(:has(.mc)){grid-template-columns:repeat(6,minmax(0,1fr))}}
 .mini{@apply m-0 px-1 py-3 text-center}
-.chip{@apply inline-flex cursor-pointer items-center gap-1.5 rounded-full border border-line bg-card px-3.5 py-2 text-sm font-semibold text-ink transition hover:border-acc;font:inherit;font-size:.85rem;font-weight:600}
-.chip.on{@apply border-acc text-acc ring-1 ring-inset ring-acc}
+.chip{@apply inline-flex cursor-pointer items-center gap-1.5 rounded-full border border-line bg-card px-3.5 py-2 text-sm text-ink transition hover:border-ink/40;font:inherit;font-size:.85rem;font-weight:500}
+.chip.on{@apply border-acc bg-acc text-accink}
 .chip.ic{@apply h-10 w-10 justify-center p-0}
 .bkt{@apply mb-3 h-10 w-10 justify-center rounded-full p-0}
-.spk{@apply ml-1.5 inline-flex h-8 w-8 cursor-pointer items-center justify-center rounded-full border border-line bg-card p-0 align-middle text-acc transition hover:border-acc}
-.spk.on{@apply border-acc bg-acc/10}
+.spk{@apply ml-1.5 inline-flex h-8 w-8 cursor-pointer items-center justify-center rounded-full border border-line bg-card p-0 align-middle text-ink transition hover:border-ink/40}
+.spk.on{@apply border-acc bg-acc/[.08]}
 .spk svg{@apply pointer-events-none h-[18px] w-[18px]}
 
 /* ---------- inputs & cards ---------- */
-.inp{@apply mb-2.5 block w-full rounded-2xl border border-line bg-card px-4 py-3 text-ink placeholder:text-mute/70 focus:border-acc focus:outline-none focus:ring-2 focus:ring-acc/30;font:inherit}
+.inp{@apply mb-2.5 block w-full rounded-xl border border-line bg-card px-4 py-3 text-ink placeholder:text-mute/70 focus:border-ink/60 focus:outline-none focus:ring-0;font:inherit}
 label.sub .inp{@apply mt-1.5}
-.card{@apply mb-4 rounded-2xl border border-line bg-card p-4 shadow-soft sm:p-5}
+.card{@apply mb-4 rounded-xl border border-line bg-card p-5 sm:p-6}
 .card .sub{@apply mb-3 mt-1.5}
 .code{@apply my-2 text-lg}
 .stats{@apply my-4 grid grid-cols-3 gap-2.5}
-.stat{@apply rounded-2xl border border-line bg-card px-1.5 py-3 text-center text-sm text-mute shadow-soft}
-.stat b{@apply block text-3xl font-extrabold text-ink}
-.score{@apply my-3 text-5xl font-extrabold text-acc}
-.scroll{@apply overflow-x-auto rounded-2xl border border-line bg-card}
+.stat{@apply rounded-xl border border-line bg-card px-1.5 py-4 text-center text-sm text-mute}
+.stat b{@apply block text-3xl font-semibold tabular-nums text-ink}
+.score{@apply my-3 text-5xl font-semibold tabular-nums text-ink}
+.scroll{@apply overflow-x-auto rounded-xl border border-line bg-card}
 table{@apply w-full border-collapse text-sm}
 th,td{@apply border-b border-line px-3 py-2.5 text-left}
-th{@apply bg-bg text-xs font-bold uppercase tracking-wide text-mute}
+th{@apply bg-bg text-xs font-medium uppercase tracking-wide text-mute}
 
 /* ---------- feedback ---------- */
-.fb{@apply mb-3.5 mt-1.5 min-h-[1.5em] font-bold}
+.fb{@apply mb-3.5 mt-1.5 min-h-[1.5em] font-semibold}
 .fb.ok{@apply text-ok}
 .fb.bad{@apply text-bad}
 .rt{@apply text-ok}
 .wr{@apply text-bad}
-.xp{@apply my-3 rounded-2xl border border-line bg-card px-4 py-3 leading-relaxed shadow-soft sm:px-5}
+.xp{@apply my-3 rounded-xl border border-line bg-card px-4 py-3 leading-relaxed sm:px-5}
 .xp p{@apply my-2}
 .xp p.pl,.pl{white-space:pre-line}
-.vok{@apply my-2 rounded-xl border border-ok bg-okbg px-3 py-2.5 text-sm}
-.warn{@apply my-2 rounded-xl border border-bad bg-badbg px-3 py-2.5 text-sm}
+.vok{@apply my-2 rounded-lg border border-ok/40 bg-okbg px-3 py-2.5 text-sm}
+.warn{@apply my-2 rounded-lg border border-bad/40 bg-badbg px-3 py-2.5 text-sm}
 .tips{@apply mb-4 list-disc space-y-1 pl-5 leading-relaxed text-mute}
 
 /* ---------- quiz ---------- */
 .top{@apply flex flex-wrap justify-between gap-2 text-sm text-mute}
-.bar{@apply mb-6 mt-2.5 h-2 overflow-hidden rounded-full bg-line}
+.bar{@apply mb-6 mt-2.5 h-1 overflow-hidden rounded-full bg-line}
 .bar i{@apply block h-full rounded-full bg-acc transition-[width] duration-300}
-.word{@apply mb-1.5 text-3xl font-extrabold tracking-tight sm:text-4xl;overflow-wrap:anywhere}
+.word{@apply mb-1.5 text-3xl font-semibold tracking-tight sm:text-4xl;overflow-wrap:anywhere}
 .q{@apply mb-5 text-mute}
-.pass{@apply mb-3.5 rounded-2xl border border-line bg-card p-4 leading-[1.7] shadow-soft sm:p-5;white-space:pre-line}
+.pass{@apply mb-3.5 rounded-xl border border-line bg-card p-5 leading-[1.75] sm:p-6;white-space:pre-line}
 .blank{@apply mx-1 inline-block min-w-[80px] border-b-2 border-ink align-baseline}
 .pp{@apply my-1.5 block text-sm leading-relaxed text-mute;white-space:pre-line}
-.tmr{@apply font-extrabold tabular-nums text-acc}
+.tmr{@apply font-semibold tabular-nums text-ink}
 .tmr.low{@apply text-bad}
 ul.miss{@apply my-4 list-none p-0}
 ul.miss li{@apply border-b border-line py-2.5}
@@ -166,7 +168,7 @@ ul.miss b{@apply block}
 }
 
 /* ---------- vocabulary ---------- */
-.vl{@apply mt-2 rounded-2xl border border-line bg-card px-4 shadow-soft}
+.vl{@apply mt-2 rounded-xl border border-line bg-card px-4}
 .vr{@apply flex items-baseline justify-between gap-3 border-b border-line py-3 leading-snug last:border-0}
 .vr b{flex:0 0 44%;overflow-wrap:anywhere}
 .vr b i{@apply inline-block min-w-[1.6em] text-xs font-normal not-italic text-mute}
@@ -174,7 +176,7 @@ ul.miss b{@apply block}
 .vr.hid{@apply cursor-pointer}
 .vr.hid span{filter:blur(7px);user-select:none;-webkit-user-select:none}
 .vr.hid.rev span{filter:none}
-.vbw{@apply mb-5 mt-2 overflow-x-auto rounded-2xl border border-line bg-card shadow-soft}
+.vbw{@apply mb-5 mt-2 overflow-x-auto rounded-xl border border-line bg-card}
 .vbt{@apply w-full min-w-[720px] border-collapse text-[.92rem]}
 .vbt th,.vbt td{@apply border-b border-line px-3 py-2.5 text-left align-top leading-snug}
 .vbt th{@apply sticky top-0 bg-bg text-xs uppercase tracking-wide text-mute}
@@ -186,7 +188,7 @@ ul.miss b{@apply block}
   .vbt{@apply block min-w-0}
   .vbt thead{@apply hidden}
   .vbt tbody,.vbt tr,.vbt td{@apply block}
-  .vbt tr{@apply mb-2.5 rounded-2xl border border-line bg-card px-3.5 py-3 shadow-soft}
+  .vbt tr{@apply mb-2.5 rounded-xl border border-line bg-card px-3.5 py-3}
   .vbt td{@apply border-0 px-0 py-1;width:auto!important}
   .vbt td:first-child{@apply hidden}
   .vbt td[data-l]::before{content:attr(data-l);@apply mt-1.5 block text-[.7rem] uppercase tracking-wide text-mute}
@@ -194,11 +196,11 @@ ul.miss b{@apply block}
 }
 .rtc p{@apply mb-3 leading-[1.8]}
 .rtt{@apply mb-2.5 text-lg font-bold}
-.rw{@apply font-bold italic text-acc}
+.rw{@apply font-semibold italic text-ink underline decoration-gold/70 decoration-2 underline-offset-4}
 .rw sup{@apply ml-0.5 text-[.62em] font-semibold not-italic text-mute}
 .rtl{@apply mt-1.5 text-sm text-mute}
 .rtl summary{@apply cursor-pointer}
-.rtu{@apply border-l-4 border-l-acc}
+.rtu{@apply border-l-2 border-l-gold}
 details>summary{@apply cursor-pointer leading-normal}
 .psr{@apply flex items-center gap-2 border-b border-line py-1.5}
 .psr b{@apply whitespace-nowrap}
@@ -212,8 +214,8 @@ details>summary{@apply cursor-pointer leading-normal}
 .mtm{@apply flex items-center gap-2}
 .mtools{@apply mb-2.5 flex flex-wrap gap-2}
 .mqh{@apply mb-2.5 flex items-center justify-between border-b-2 border-dashed border-line pb-2.5}
-.mnum{@apply rounded-lg bg-ink px-2.5 py-1 font-bold text-bg}
-.mfoot{@apply fixed inset-x-0 bottom-0 z-20 flex items-center justify-between gap-2 border-t border-line bg-card/90 px-4 py-2.5 backdrop-blur-xl sm:px-6;padding-bottom:calc(10px + env(safe-area-inset-bottom,0px))}
+.mnum{@apply rounded-md bg-ink px-2.5 py-1 font-semibold text-bg}
+.mfoot{@apply fixed inset-x-0 bottom-0 z-20 flex items-center justify-between gap-2 border-t border-line bg-bg/90 px-4 py-2.5 backdrop-blur-md sm:px-6;padding-bottom:calc(10px + env(safe-area-inset-bottom,0px))}
 #jm:empty,#tm:empty{display:none}
 /* keep the footer controls in line with the question column on wide screens */
 @screen sm{.mfoot{padding-left:max(1.5rem,calc((100% - 720px)/2));padding-right:max(1.5rem,calc((100% - 720px)/2))}}
@@ -225,8 +227,8 @@ details>summary{@apply cursor-pointer leading-normal}
 .mgrid{@apply grid gap-2;grid-template-columns:repeat(auto-fill,minmax(54px,1fr))}
 .mg{@apply border-dashed}
 .mg.ans{@apply border-solid border-acc bg-acc text-accink}
-.mg.cur{@apply border-[3px] border-ink}
+.mg.cur{@apply border-2 border-ink}
 
 /* overlays created by the app (dialogs, calculator, question lists) */
 body>div[style*="position:fixed"]{@apply backdrop-blur-sm}
-body>div[style*="position:fixed"]>.card,#nvm>div{@apply shadow-2xl}
+body>div[style*="position:fixed"]>.card,#nvm>div{@apply shadow-xl}

@@ -10,7 +10,7 @@ function paintTheme(){
   const dark=root.classList.contains("dark"),label=dark?"Yorug' rejim":"Qorong'i rejim";
   themeBtn.querySelector(".i-moon").toggleAttribute("hidden",dark);themeBtn.querySelector(".i-sun").toggleAttribute("hidden",!dark);
   themeBtn.setAttribute("aria-label",label);themeBtn.title=label;
-  const m=document.querySelector('meta[name="theme-color"]');if(m)m.content=dark?"#0a111f":"#16233f";
+  const m=document.querySelector('meta[name="theme-color"]');if(m)m.content=dark?"#0a0a0a":"#fafafa";
 }
 themeBtn.addEventListener("click",()=>{
   const t=root.classList.contains("dark")?"light":"dark";
