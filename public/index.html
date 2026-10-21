@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
-<link rel="stylesheet" href="/css/app.css?v=3">
+<link rel="stylesheet" href="/css/app.css?v=4">
 <script>
   /* apply the saved (or system) theme before first paint */
   (function(){var t=null;try{t=localStorage.getItem("ss-theme")}catch(e){}
@@ -20,6 +20,7 @@
 </script>
 </head>
 <body>
+<a class="skip" href="#app">Asosiy qismga o'tish</a>
 <header class="shell-header">
   <div class="shell-in">
     <a href="/" class="brand" data-go="home" aria-label="Super SAT">
@@ -60,7 +61,7 @@
   </nav>
 </header>
 
-<main id="app" aria-live="polite">
+<main id="app" tabindex="-1" aria-live="polite">
   <div class="wrap"><p class="sub" style="text-align:center;margin-top:80px">Yuklanmoqda...</p></div>
 </main>
 

@@ -32,13 +32,13 @@ Object.keys(SECTIONS).forEach(k=>{const f=window[k];if(typeof f!=="function")ret
 function stopAll(){
   try{clearInterval(tick);clearTimeout(ADV);clearInterval(GT)}catch(e){}
   try{if(MS){clearInterval(MS.tk);MS=null}}catch(e){}
-  document.querySelectorAll('body>div[style*="position:fixed"],#nvm').forEach(o=>o.remove());
+  document.querySelectorAll('.ovl,#nvm').forEach(o=>o.remove());
 }
 function go(name){
   const fn=window[name];if(typeof fn!=="function")return;
   const run=()=>{stopAll();fn();closeDrawer();window.scrollTo({top:0,behavior:"instant"})};
   let inExam=false;try{inExam=!!(MS&&MS.cur&&MS.si<MS.st.length)}catch(e){}
-  if(inExam&&typeof mDlg==="function"){closeDrawer();mDlg("Imtihonni tark etasizmi? Natijalar saqlanmaydi.",[["Davom etish",()=>{}],["Chiqish",run,1]]);return}
+  if(inExam&&typeof mDlg==="function"){closeDrawer();mDlg("Imtihonni tark etasizmi? Natijalar saqlanmaydi.",[["Davom etish",()=>{}],["Chiqish",run,"del"]]);return}
   run();
 }
 document.addEventListener("click",e=>{
@@ -68,10 +68,10 @@ const visible=el=>el&&!el.hidden&&el.offsetParent!==null;
 document.addEventListener("keydown",e=>{
   if(e.ctrlKey||e.metaKey||e.altKey)return;
   const t=e.target;if(t&&(t.isContentEditable||/^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName)))return;
-  const overlay=document.querySelector('body>div[style*="position:fixed"],#nvm');
+  const overlay=document.querySelector('.ovl,#nvm');
   if(e.key==="Escape"){
     if(!drawer.hidden){closeDrawer();return}
-    if(overlay){const c=overlay.querySelector("#nvx,#nx_,#rx,#cx");if(c)c.click()}
+    if(overlay){const c=overlay.querySelector("#nvx,#nx_,#rx,#cx,[data-esc]");if(c)c.click()}
     return;
   }
   if(overlay)return;
