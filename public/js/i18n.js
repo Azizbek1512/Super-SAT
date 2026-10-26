@@ -45,7 +45,7 @@ const D=[
 ["tomonidan maxsus tayyorlandi.",".","."],
 ["Kitobni tanlang","Выберите раздел","Choose a section"],
 ["Kitobni tanlang.","Выберите книгу.","Choose a book."],
-["Lug'atlar bilan ishlash","Работа со словами","Vocabulary practice"],
+["Vocabulary books","Работа со словами","Vocabulary practice"],
 ["4 ta mavzu","4 темы","4 topics"],
 ["13 ta mavzu","13 тем","13 topics"],
 ["Qiziqarli o'yinlar","Интересные игры","Fun games"],
